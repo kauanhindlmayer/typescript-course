@@ -20,9 +20,8 @@ let pessoa: {nome: string, idade: number, adulto?: boolean} = {
 // adulto?: -> Chave opcional
 
 // Funções
-function soma(x: number, y: number) {
+//           tipagem dos parâmetros  tipagem da função
+function soma(x: number, y: number): number {
   return x + y;
 }
-
-const result = soma(2, 2);
-console.log(result);
+const soma2: (x: number, y: number) => number = (x, y) => x + y;
