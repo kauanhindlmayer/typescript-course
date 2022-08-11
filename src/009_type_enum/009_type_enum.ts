@@ -7,8 +7,8 @@ enum Colors {
 // console.log(Colors);
 console.log(Colors.RED);
 
-function chooseTheColor(color: Colors): void {
+export function chooseColor(color: Colors): void {
   console.log(Colors[color]);
 }
 
-chooseTheColor(0);
+chooseColor(0);
