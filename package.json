@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/kauanhindlmayer/typescript-course#readme",
   "devDependencies": {
+    "@types/node": "^18.7.3",
+    "@types/validator": "^13.7.5",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "eslint": "^8.20.0",
@@ -35,6 +37,6 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@types/node": "^18.0.6"
+    "validator": "^13.7.0"
   }
 }
