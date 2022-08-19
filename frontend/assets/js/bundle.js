@@ -6,10 +6,46 @@
 /*!******************************************************************!*\
   !*** ./src/section_two/035_exercise_video/035_exercise_video.ts ***!
   \******************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, exports) => {
 
 
-console.log('Hello, World!');
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+class VideoPlayer {
+    constructor(videoPlayerElements) {
+        this.videoPlayer = videoPlayerElements.videoPlayer;
+        this.playButton = videoPlayerElements.playButton;
+        this.stopButton = videoPlayerElements.stopButton;
+    }
+    playToggle() {
+        if (this.videoPlayer.paused) {
+            this.videoPlayer.play();
+            this.playButton.innerHTML = 'Pause';
+        }
+        else {
+            this.videoPlayer.pause();
+            this.playButton.innerHTML = 'Play';
+        }
+    }
+    stop() {
+    }
+    startEvents() {
+        this.playButton.addEventListener('click', () => {
+            this.playToggle();
+        });
+        this.stopButton.addEventListener('click', () => {
+            this.videoPlayer.pause();
+            this.videoPlayer.currentTime = 0;
+            this.playButton.innerText = 'Play';
+        });
+    }
+}
+exports["default"] = VideoPlayer;
+const videoPlayer = new VideoPlayer({
+    videoPlayer: document.querySelector('.video'),
+    playButton: document.querySelector('.play'),
+    stopButton: document.querySelector('.stop'),
+});
+videoPlayer.startEvents();
 
 
 /***/ })
