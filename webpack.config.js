@@ -2,7 +2,7 @@ const path = require('path'); // eslint-disable-line
 
 module.exports = {
   mode: 'development',
-  entry: './src/section_one/019_exercise/019_exercise.ts',
+  entry: './src/section1/019_exercise/019_exercise.ts',
   module: {
     rules: [
       {
