@@ -1,10 +1,17 @@
 import { OrderStatus } from './interfaces/order_status';
+import { Messaging } from '../services/messaging';
+import { Persistency } from '../services/persistency';
 import { ShoppingCart } from './shopping_cart';
 
 export class Order {
   private _orderStatus: OrderStatus = 'open';
 
-  constructor(private readonly cart: ShoppingCart) {}
+  constructor(
+    //dependency injection
+    private readonly cart: ShoppingCart,
+    private readonly messaging: Messaging,
+    private readonly persistency: Persistency,
+  ) {}
 
   get orderStatus(): OrderStatus {
     return this._orderStatus;
@@ -17,18 +24,10 @@ export class Order {
     }
 
     this._orderStatus = 'closed';
-    this.sendMessage(
-      `Your request with total ${this.cart.total} has been received.`,
+    this.messaging.sendMessage(
+      `Your request with total ${this.cart.total()} has been received.`,
     );
-    this.saveOrder();
+    this.persistency.saveOrder();
     this.cart.clear();
-  }
-
-  sendMessage(message: string): void {
-    console.log('Message sent: ', message);
-  }
-
-  saveOrder(): void {
-    console.log('Order saved successfully...');
   }
 }

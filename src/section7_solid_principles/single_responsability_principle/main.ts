@@ -1,11 +1,17 @@
-import { Order } from './order';
-import { ShoppingCart } from './shopping_cart';
+import { Messaging } from './services/messaging';
+import { Order } from './entities/order';
+import { Persistency } from './services/persistency';
+import { Product } from './entities/product';
+import { ShoppingCart } from './entities/shopping_cart';
 
 const shoppingCart = new ShoppingCart();
-const order = new Order(shoppingCart);
-shoppingCart.addItem({ name: 'Camiseta', price: 49.99 });
-shoppingCart.addItem({ name: 'Caderno', price: 9.99 });
-shoppingCart.addItem({ name: 'Lápis', price: 1.99 });
+const messaging = new Messaging();
+const persistency = new Persistency();
+const order = new Order(shoppingCart, messaging, persistency);
+
+shoppingCart.addItem(new Product('Camiseta', 49.99));
+shoppingCart.addItem(new Product('Caderno', 9.99));
+shoppingCart.addItem(new Product('Lápis', 1.99));
 
 console.log(shoppingCart.items);
 console.log(shoppingCart.total());
