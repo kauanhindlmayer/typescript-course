@@ -17,3 +17,11 @@ export class TenPercentDiscount extends Discount {
     return +(price - price * (this.discount / 100)).toFixed(2);
   }
 }
+
+export class NoDiscount extends Discount {
+  private readonly discount = 10;
+
+  calculate(price: number): number {
+    return +price.toFixed(2);
+  }
+}
