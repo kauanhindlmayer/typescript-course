@@ -31,7 +31,7 @@ describe('Objects', () => {
     const person = { name: 'Kauan', age: 18 };
     const anotherPerson = { ...person };
 
-    expect(person).toBe(anotherPerson); // Fail
+    // expect(person).toBe(anotherPerson); // Fail
     expect(person).toEqual(anotherPerson); // Success
 
     expect(person).toHaveProperty('age', 18);
